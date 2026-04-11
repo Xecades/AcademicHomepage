@@ -10,13 +10,20 @@ defineProps<{
 </script>
 
 <template>
-    <div class="news">
-        <div class="table-responsive" :class="{ scrollable }">
-            <table class="table table-sm table-borderless">
+    <div>
+        <div class="overflow-x-auto" :class="{ 'max-h-[60vw] overflow-y-auto': scrollable }">
+            <table class="w-full border-collapse">
                 <tbody>
                     <tr v-for="(item, index) in items" :key="`${item.dateLabel}-${index}`">
-                        <th scope="row">{{ item.dateLabel }}</th>
-                        <td><RichText :nodes="item.content" /></td>
+                        <th
+                            scope="row"
+                            class="w-1/5 px-0 py-px pr-4 text-left align-top text-base font-bold max-[576px]:w-[30%]"
+                        >
+                            {{ item.dateLabel }}
+                        </th>
+                        <td class="px-0 py-px pr-4 text-left align-top text-base">
+                            <RichText :nodes="item.content" />
+                        </td>
                     </tr>
                 </tbody>
             </table>
