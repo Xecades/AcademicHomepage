@@ -1,0 +1,47 @@
+<script setup lang="ts">
+import NewsTable from "@/components/NewsTable.vue";
+import PublicationList from "@/components/PublicationList.vue";
+import RichText from "@/components/RichText.vue";
+import { news, profile, publications } from "@/data/site";
+</script>
+
+<template>
+    <div class="post">
+        <header class="post-header">
+            <h1 class="post-title">
+                <span class="font-weight-bold">{{ profile.firstName }}</span> {{ profile.lastName }}
+            </h1>
+            <RichText class="desc" :nodes="profile.subtitle" tag="p" />
+        </header>
+
+        <article>
+            <div class="profile float-right">
+                <figure>
+                    <img class="img-fluid rounded" :src="profile.avatar" alt="me.png" />
+                </figure>
+            </div>
+
+            <div class="clearfix">
+                <RichText v-for="(text, index) in profile.bio" :key="index" :nodes="text" tag="p" />
+                <p>
+                    <a
+                        v-for="(contact, index) in profile.contacts"
+                        :key="contact.label"
+                        :href="contact.url"
+                        target="_blank"
+                        rel="noopener"
+                    >
+                        {{ contact.label
+                        }}<span v-if="index < profile.contacts.length - 1"> / </span>
+                    </a>
+                </p>
+            </div>
+
+            <h2>news</h2>
+            <NewsTable :items="news" scrollable />
+
+            <h2>research</h2>
+            <PublicationList :items="publications" :show-year-headings="false" />
+        </article>
+    </div>
+</template>
