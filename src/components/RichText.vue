@@ -16,7 +16,7 @@ export default defineComponent({
         },
     },
     render() {
-        return h(this.tag, null, this.nodes);
+        return h(this.tag, this.$attrs, this.nodes);
     },
 });
 </script>
