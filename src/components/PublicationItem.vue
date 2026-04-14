@@ -10,7 +10,7 @@ defineProps<{
 
 <template>
     <li>
-        <div class="grid gap-5 md:grid-cols-[350px_1fr] md:gap-7">
+        <div class="grid gap-5 md:grid-cols-[350px_1fr] md:items-stretch md:gap-7">
             <div>
                 <figure
                     class="overflow-hidden rounded-sm border border-zinc-300/80 bg-zinc-100/80 shadow-[0_14px_30px_-24px_rgba(24,24,27,0.7)]"
@@ -24,21 +24,21 @@ defineProps<{
                 </figure>
             </div>
 
-            <div :id="publication.id" class="-mt-1">
+            <div :id="publication.id" class="-mt-1 flex h-full flex-col">
                 <div class="text-[1.06rem] leading-7 text-zinc-800 font-semibold">
                     {{ publication.title }}
                 </div>
                 <RichText
                     :nodes="publication.authors"
                     tag="p"
-                    class="m-0 leading-7 text-zinc-700"
+                    class="author-line m-0 leading-7 text-zinc-700 text-[0.97rem]"
                 />
                 <RichText
                     :nodes="publication.venue"
                     tag="p"
                     class="m-0 pt-0.5 text-sm italic leading-6 text-zinc-500"
                 />
-                <div class="flex flex-wrap gap-2 pt-1">
+                <div class="mt-auto flex flex-wrap gap-2 pt-2 -mb-1">
                     <a
                         v-for="link in publication.links"
                         :key="link.label"
@@ -54,3 +54,11 @@ defineProps<{
         </div>
     </li>
 </template>
+
+<style scoped>
+.author-line :deep(em) {
+    color: #18181b;
+    font-style: normal;
+    font-weight: 600;
+}
+</style>

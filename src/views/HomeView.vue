@@ -23,9 +23,9 @@ import { news, profile, publications } from "@/data/site";
             </header>
 
             <article class="space-y-10 pt-8 md:space-y-12 md:pt-10">
-                <section class="grid gap-7 md:grid-cols-[1fr_240px] md:items-start md:gap-10">
+                <section class="grid gap-7 md:grid-cols-[1fr_240px] md:items-start md:gap-9">
                     <figure
-                        class="overflow-hidden rounded-sm border border-zinc-300/70 bg-zinc-100/80 shadow-[0_10px_30px_-20px_rgba(39,39,42,0.5)] md:order-2"
+                        class="overflow-hidden rounded-sm border border-zinc-300/70 bg-zinc-100/80 shadow-[0_6px_16px_-14px_rgba(39,39,42,0.45)] md:order-2"
                     >
                         <img
                             :src="profile.avatar"
@@ -73,6 +73,9 @@ import { news, profile, publications } from "@/data/site";
                 <section class="space-y-5">
                     <h2 class="section-title text-sm text-zinc-500">research</h2>
                     <PublicationList :items="publications" :show-year-headings="false" />
+                    <p class="text-xs italic leading-6 text-zinc-500">
+                        (* denotes equal contribution)
+                    </p>
                 </section>
             </article>
         </div>
@@ -89,7 +92,6 @@ import { news, profile, publications } from "@/data/site";
     text-transform: uppercase;
 }
 
-.hero-subtitle :deep(a),
 .copy :deep(a),
 .news-table :deep(a),
 .pub-list :deep(a) {
@@ -102,7 +104,7 @@ import { news, profile, publications } from "@/data/site";
 }
 
 .hero-subtitle :deep(a) {
-    border-bottom-color: color-mix(in srgb, #18181b 42%, transparent);
+    border-bottom: 0;
     color: #18181b;
 }
 
