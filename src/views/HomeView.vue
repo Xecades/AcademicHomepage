@@ -18,42 +18,49 @@ import { news, profile, publications } from "@/data/site";
                 <RichText
                     :nodes="profile.subtitle"
                     tag="p"
-                    class="mt-3 max-w-2xl text-base leading-7 text-zinc-600 md:text-[1.05rem]"
+                    class="hero-subtitle m-0 mt-3 max-w-2xl text-base leading-7 text-zinc-600 md:text-[1.05rem]"
                 />
             </header>
 
             <article class="space-y-10 pt-8 md:space-y-12 md:pt-10">
-                <section class="grid gap-7 md:grid-cols-[220px_1fr] md:gap-10">
+                <section class="grid gap-7 md:grid-cols-[1fr_240px] md:items-start md:gap-10">
                     <figure
-                        class="overflow-hidden rounded-sm border border-zinc-300/70 bg-zinc-100/80 shadow-[0_10px_30px_-20px_rgba(39,39,42,0.5)]"
+                        class="overflow-hidden rounded-sm border border-zinc-300/70 bg-zinc-100/80 shadow-[0_10px_30px_-20px_rgba(39,39,42,0.5)] md:order-2"
                     >
                         <img
                             :src="profile.avatar"
                             :alt="`${profile.firstName} ${profile.lastName}`"
-                            class="aspect-[3/4] h-full w-full object-cover"
+                            class="aspect-3/4 h-full w-full object-cover"
                         />
                     </figure>
 
-                    <div class="copy pt-1">
+                    <div class="copy pt-1 md:order-1">
                         <RichText
                             v-for="(text, index) in profile.bio"
                             :key="index"
                             :nodes="text"
                             tag="p"
-                            class="mb-4 leading-8 text-zinc-700 last:mb-0"
+                            class="m-0 mb-4 leading-8 text-zinc-700 last:mb-0"
                         />
-                        <p class="mt-6 text-sm uppercase tracking-[0.12em] text-zinc-500">
-                            <a
+                        <p
+                            class="mt-6 text-sm uppercase tracking-[0.12em] text-zinc-500 text-center"
+                        >
+                            <template
                                 v-for="(contact, index) in profile.contacts"
                                 :key="contact.label"
-                                :href="contact.url"
-                                target="_blank"
-                                rel="noopener"
-                                class="transition-colors duration-200 hover:text-zinc-900"
                             >
-                                {{ contact.label
-                                }}<span v-if="index < profile.contacts.length - 1"> / </span>
-                            </a>
+                                <a
+                                    :href="contact.url"
+                                    target="_blank"
+                                    rel="noopener"
+                                    class="transition-colors duration-200 hover:text-zinc-900"
+                                >
+                                    {{ contact.label }}
+                                </a>
+                                <span v-if="index < profile.contacts.length - 1" aria-hidden="true">
+                                    /
+                                </span>
+                            </template>
                         </p>
                     </div>
                 </section>
@@ -82,6 +89,7 @@ import { news, profile, publications } from "@/data/site";
     text-transform: uppercase;
 }
 
+.hero-subtitle :deep(a),
 .copy :deep(a),
 .news-table :deep(a),
 .pub-list :deep(a) {
@@ -93,6 +101,12 @@ import { news, profile, publications } from "@/data/site";
         color 200ms ease;
 }
 
+.hero-subtitle :deep(a) {
+    border-bottom-color: color-mix(in srgb, #18181b 42%, transparent);
+    color: #18181b;
+}
+
+.hero-subtitle :deep(a:hover),
 .copy :deep(a:hover),
 .news-table :deep(a:hover),
 .pub-list :deep(a:hover) {
