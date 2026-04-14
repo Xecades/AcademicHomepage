@@ -29,11 +29,7 @@ const _authors = {
 export const profile: Profile = {
     firstName: "Zhe",
     lastName: "Huang",
-    subtitle: [
-        "Undergrad @ ",
-        link("Turing, ZJU", "http://www.cs.zju.edu.cn/turingclass_en/"),
-        ".",
-    ],
+    subtitle: ["Undergrad @ ", link("Turing, ZJU", "http://www.cs.zju.edu.cn/turingclass_en/")],
     bio: [
         [
             "I am a junior undergraduate student at ",
@@ -71,8 +67,9 @@ export const profile: Profile = {
         { label: "Email", url: "mailto:zhehuang02@gmail.com" },
         { label: "Github", url: "https://github.com/Xecades" },
         { label: "X", url: "https://x.com/XecadesZhe" },
+        { label: "CV", url: "zhehuang-cv.pdf" },
     ],
-    avatar: "https://placehold.co/600x800?text=My+Photo",
+    avatar: "https://placehold.co/600x800/eee/bbb?text=Photo\\nnot+taken\\nyet+:(",
     footer: ["© Copyright 2026 Zhe Huang"],
 };
 

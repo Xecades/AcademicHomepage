@@ -38,7 +38,7 @@ defineProps<{
                     tag="p"
                     class="m-0 pt-0.5 text-sm italic leading-6 text-zinc-500"
                 />
-                <div class="mt-auto flex flex-wrap gap-2 pt-2 -mb-1">
+                <div class="mt-auto flex flex-wrap gap-2 pt-2">
                     <a
                         v-for="link in publication.links"
                         :key="link.label"

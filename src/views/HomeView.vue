@@ -2,16 +2,14 @@
 import NewsTable from "@/components/NewsTable.vue";
 import PublicationList from "@/components/PublicationList.vue";
 import RichText from "@/components/RichText.vue";
-import { news, profile, publications } from "@/data/site";
+import { news, profile, publications } from "@/assets/data/site";
 </script>
 
 <template>
-    <div
-        class="page-frame min-h-screen bg-[radial-gradient(circle_at_12%_8%,rgba(24,24,27,0.04),transparent_40%),radial-gradient(circle_at_88%_4%,rgba(24,24,27,0.035),transparent_38%),linear-gradient(180deg,#fcfcfb_0%,#f6f6f3_100%)] text-zinc-700"
-    >
+    <div class="page-frame min-h-screen text-slate-700">
         <div class="mx-auto max-w-5xl px-6 pb-14 pt-12 md:px-10 md:pb-16 md:pt-16">
             <header class="border-b border-zinc-300/70 pb-8 md:pb-10">
-                <h1 class="text-4xl font-semibold tracking-tight text-zinc-900 md:text-5xl">
+                <h1 class="text-4xl font-semibold tracking-tight text-zinc-800 md:text-5xl">
                     <span class="font-normal text-zinc-500">{{ profile.firstName }}</span>
                     {{ profile.lastName }}
                 </h1>
@@ -25,7 +23,7 @@ import { news, profile, publications } from "@/data/site";
             <article class="space-y-10 pt-8 md:space-y-12 md:pt-10">
                 <section class="grid gap-7 md:grid-cols-[1fr_240px] md:items-start md:gap-9">
                     <figure
-                        class="overflow-hidden rounded-sm border border-zinc-300/70 bg-zinc-100/80 shadow-[0_6px_16px_-14px_rgba(39,39,42,0.45)] md:order-2"
+                        class="overflow-hidden rounded-sm border border-zinc-300/70 bg-zinc-100/80 shadow-[0_4px_12px_-10px_rgba(39,39,42,0.38)] md:order-2"
                     >
                         <img
                             :src="profile.avatar"
@@ -70,12 +68,10 @@ import { news, profile, publications } from "@/data/site";
                     <NewsTable :items="news" scrollable />
                 </section>
 
-                <section class="space-y-5">
+                <section class="space-y-4">
                     <h2 class="section-title text-sm text-zinc-500">research</h2>
+                    <p class="text-sm italic text-zinc-500">(* denotes equal contribution)</p>
                     <PublicationList :items="publications" :show-year-headings="false" />
-                    <p class="text-xs italic leading-6 text-zinc-500">
-                        (* denotes equal contribution)
-                    </p>
                 </section>
             </article>
         </div>
@@ -104,14 +100,16 @@ import { news, profile, publications } from "@/data/site";
 }
 
 .hero-subtitle :deep(a) {
-    border-bottom: 0;
-    color: #18181b;
+    border-bottom: 1px solid transparent;
+    color: #27272a;
+    text-decoration: none;
+    transition: border-color 200ms ease;
 }
 
-.hero-subtitle :deep(a:hover),
 .copy :deep(a:hover),
 .news-table :deep(a:hover),
-.pub-list :deep(a:hover) {
+.pub-list :deep(a:hover),
+.hero-subtitle :deep(a:hover) {
     border-bottom-color: color-mix(in srgb, #18181b 55%, transparent);
     color: #18181b;
 }

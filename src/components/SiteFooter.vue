@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import RichText from "@/components/RichText.vue";
-import { profile } from "@/data/site";
+import { profile } from "@/assets/data/site";
 </script>
 
 <template>
