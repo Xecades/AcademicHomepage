@@ -31,15 +31,13 @@ const grouped = computed(() => {
 </script>
 
 <template>
-    <div class="mt-8">
+    <div>
         <template v-if="showYearHeadings">
             <template v-for="group in grouped" :key="group.year">
-                <h2
-                    class="mt-8 border-t border-[var(--global-divider-color)] pt-4 text-right text-[2rem] text-[var(--global-divider-color)]"
-                >
+                <h2>
                     {{ group.year }}
                 </h2>
-                <ol class="mt-0 list-none p-0">
+                <ol>
                     <PublicationItem
                         v-for="publication in group.items"
                         :key="publication.id"
@@ -49,7 +47,7 @@ const grouped = computed(() => {
             </template>
         </template>
 
-        <ol v-else class="mt-0 list-none p-0">
+        <ol v-else>
             <PublicationItem
                 v-for="publication in list"
                 :key="publication.id"

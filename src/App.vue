@@ -3,7 +3,7 @@ import SiteFooter from "@/components/SiteFooter.vue";
 </script>
 
 <template>
-    <main class="mx-auto w-full max-w-[930px] px-4 max-[576px]:px-3" role="main">
+    <main role="main">
         <RouterView />
     </main>
 

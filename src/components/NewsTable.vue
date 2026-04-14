@@ -11,17 +11,14 @@ defineProps<{
 
 <template>
     <div>
-        <div class="overflow-x-auto" :class="{ 'max-h-[60vw] overflow-y-auto': scrollable }">
-            <table class="w-full border-collapse">
+        <div :class="{ 'max-h-[60vw] overflow-y-auto': scrollable }">
+            <table>
                 <tbody>
                     <tr v-for="(item, index) in items" :key="`${item.dateLabel}-${index}`">
-                        <th
-                            scope="row"
-                            class="w-1/5 px-0 py-px pr-4 text-left align-top text-base font-bold max-[576px]:w-[30%]"
-                        >
+                        <th scope="row">
                             {{ item.dateLabel }}
                         </th>
-                        <td class="px-0 py-px pr-4 text-left align-top text-base">
+                        <td>
                             <RichText :nodes="item.content" />
                         </td>
                     </tr>
