@@ -1,7 +1,9 @@
 :root {
-    --paper-bg: #f3f5f6;
+    --theme-color: #5b8db2;
+    --paper-bg: color-mix(in srgb, #ffffff, var(--theme-color) 3.5%);
     --text-ink: #4f5963;
-    --selection-bg: color-mix(in srgb, #3f3f46 22%, transparent);
+    --selection-bg: #b3b3b34f;
+    --background-opacity: 0.024;
 }
 
 html,
@@ -18,20 +20,6 @@ body {
     margin: 0;
     color: var(--text-ink);
     background-color: var(--paper-bg);
-    background-image:
-        radial-gradient(
-            circle at 12% 8%,
-            color-mix(in srgb, #3f3f46 9%, transparent),
-            transparent 40%
-        ),
-        radial-gradient(
-            circle at 88% 4%,
-            color-mix(in srgb, #3f3f46 7%, transparent),
-            transparent 38%
-        ),
-        linear-gradient(180deg, #fcfcfc 0%, #f3f5f6 100%);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
 }
 
 * {
