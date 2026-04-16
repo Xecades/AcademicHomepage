@@ -6,17 +6,19 @@ import { news, profile, publications } from "@/assets/data/site";
 </script>
 
 <template>
-    <div class="page-frame min-h-screen text-slate-700">
+    <div class="min-h-screen text-slate-700">
         <div class="mx-auto max-w-5xl px-6 pb-14 pt-12 md:px-10 md:pb-16 md:pt-16">
             <header class="border-b border-zinc-300/70 pb-8 md:pb-10">
-                <h1 class="text-4xl font-semibold tracking-tight text-zinc-800 md:text-5xl">
+                <h1
+                    class="text-4xl font-[530] text-zinc-700 md:text-5xl font-(family-name:--header-font-family)"
+                >
                     <span class="font-normal text-zinc-500">{{ profile.firstName }}</span>
                     {{ profile.lastName }}
                 </h1>
                 <RichText
                     :nodes="profile.subtitle"
                     tag="p"
-                    class="hero-subtitle m-0 mt-3 max-w-2xl text-base leading-7 text-zinc-600 md:text-[1.05rem]"
+                    class="hero-subtitle m-0 mt-2 max-w-2xl text-base leading-7 text-zinc-600 md:text-[1.05rem] sans-serif"
                 />
             </header>
 
@@ -41,7 +43,7 @@ import { news, profile, publications } from "@/assets/data/site";
                             class="m-0 mb-4 leading-8 text-zinc-700 last:mb-0"
                         />
                         <p
-                            class="mt-6 text-sm uppercase tracking-[0.12em] text-zinc-500 text-center"
+                            class="mt-6 text-sm uppercase tracking-[0.12em] text-zinc-500 text-center sans-serif"
                         >
                             <template
                                 v-for="(contact, index) in profile.contacts"
@@ -79,10 +81,6 @@ import { news, profile, publications } from "@/assets/data/site";
 </template>
 
 <style scoped>
-.page-frame {
-    font-family: "Iowan Old Style", "Palatino Linotype", "Times New Roman", "Noto Serif SC", serif;
-}
-
 .section-title {
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -97,6 +95,10 @@ import { news, profile, publications } from "@/assets/data/site";
     transition:
         border-color 200ms ease,
         color 200ms ease;
+}
+
+.copy :deep(strong) {
+    color: #000;
 }
 
 .hero-subtitle :deep(a) {

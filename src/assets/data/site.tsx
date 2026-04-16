@@ -6,13 +6,15 @@ const link = (content: RichNode | RichNode[], url: string) => (
         {content}
     </a>
 );
-const em = (text: RichNode | RichNode[]) => <em>{text}</em>;
+const b = (text: RichNode | RichNode[]) => <strong>{text}</strong>;
+const commaSeparated = (items: RichNode[]): RichNode[] =>
+    items.flatMap((item, index) => (index === 0 ? [item] : [", ", item]));
 
 const _make_author = (name: RichNode, url: string) => ({
     _: link(name, url),
     star: link([name, sup("*")], url),
-    stress: em(name),
-    star_stress: em([name, sup("*")]),
+    stress: b(name),
+    star_stress: b([name, sup("*")]),
 });
 
 const _authors = {
@@ -51,15 +53,15 @@ export const profile: Profile = {
         ],
         [
             "My academic focus lies in ",
-            em("computer vision"),
+            b("computer vision"),
             " and ",
-            em("embodied intelligence"),
+            b("embodied intelligence"),
             ", with experience in ",
-            em("3D perception"),
+            b("3D perception"),
             ", ",
-            em("visual localization"),
+            b("visual localization"),
             ", and ",
-            em("vision-language navigation"),
+            b("vision-language navigation"),
             ", and a broader interest in learning-based intelligent agents.",
         ],
     ],
@@ -88,23 +90,16 @@ export const publications: Publication[] = [
         id: "aerialextrematch",
         preview: "/assets/img/pubs/AerialExtreMatch.png",
         title: "AerialExtreMatch: A Benchmark for Extreme-View Image Matching and Localization",
-        authors: [
+        authors: commaSeparated([
             _authors.rouwan_wu.star,
-            ", ",
             _authors.me.star_stress,
-            ", ",
             _authors.xingyi_he._,
-            ", ",
             _authors.yan_liu._,
-            ", ",
             _authors.shen_yan._,
-            ", ",
             _authors.sida_peng._,
-            ", ",
             _authors.maojun_zhang._,
-            ", ",
             _authors.xiaowei_zhou._,
-        ],
+        ]),
         venue: ["RA-L, 2026"],
         year: 2026,
         links: [

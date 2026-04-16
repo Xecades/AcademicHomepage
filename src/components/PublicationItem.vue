@@ -31,12 +31,12 @@ defineProps<{
                 <RichText
                     :nodes="publication.authors"
                     tag="p"
-                    class="author-line m-0 leading-7 text-zinc-700 text-[0.97rem]"
+                    class="author-line m-0 leading-7 text-zinc-700 text-[0.97rem] sans-serif"
                 />
                 <RichText
                     :nodes="publication.venue"
                     tag="p"
-                    class="m-0 pt-0.5 text-sm italic leading-6 text-zinc-500"
+                    class="m-0 pt-0.5 text-sm italic leading-6 text-zinc-500 sans-serif"
                 />
                 <div class="mt-auto flex flex-wrap gap-2 pt-2">
                     <a

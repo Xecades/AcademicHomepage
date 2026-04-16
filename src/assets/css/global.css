@@ -4,6 +4,10 @@
     --text-ink: #4f5963;
     --selection-bg: #b3b3b34f;
     --background-opacity: 0.024;
+    --sans-serif-fonts: "Quicksand", sans-serif;
+    --serif-fonts:
+        "Iowan Old Style", "Palatino Linotype", "Times New Roman", "Noto Serif SC", serif;
+    --header-font-family: "Playfair Display", serif;
 }
 
 html,
@@ -20,6 +24,15 @@ body {
     margin: 0;
     color: var(--text-ink);
     background-color: var(--paper-bg);
+    font-family: var(--serif-fonts);
+}
+
+.sans-serif {
+    font-family: var(--sans-serif-fonts);
+}
+
+.sans-serif strong {
+    font-weight: 600;
 }
 
 * {

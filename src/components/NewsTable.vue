@@ -21,7 +21,7 @@ defineProps<{
                     >
                         <th
                             scope="row"
-                            class="w-34 whitespace-nowrap px-4 py-3 text-xs font-normal uppercase tracking-[0.12em] leading-6 text-zinc-500 md:px-5"
+                            class="w-34 whitespace-nowrap px-4 py-3 text-xs font-normal uppercase tracking-[0.12em] leading-6 text-zinc-500 md:px-5 sans-serif"
                         >
                             {{ item.dateLabel }}
                         </th>
