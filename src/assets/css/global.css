@@ -8,6 +8,7 @@
     --serif-fonts:
         "Iowan Old Style", "Palatino Linotype", "Times New Roman", "Noto Serif SC", serif;
     --header-font-family: "Playfair Display", serif;
+    --roundhand-font-family: "Silhouette Roundhand", cursive;
 }
 
 html,

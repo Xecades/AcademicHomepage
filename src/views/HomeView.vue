@@ -8,7 +8,10 @@ import { news, profile, publications } from "@/assets/data/site";
 <template>
     <div class="min-h-screen text-slate-700">
         <div class="mx-auto max-w-5xl px-6 pb-14 pt-12 md:px-10 md:pb-16 md:pt-16">
-            <header class="border-b border-zinc-300/70 pb-8 md:pb-10">
+            <header class="border-b border-zinc-300/70 pb-8 md:pb-10 relative">
+                <div class="ornament" aria-hidden="true">
+                    {{ profile.firstName }} {{ profile.lastName }}
+                </div>
                 <h1
                     class="text-4xl font-[530] text-zinc-700 md:text-5xl font-(family-name:--header-font-family)"
                 >
@@ -23,7 +26,9 @@ import { news, profile, publications } from "@/assets/data/site";
             </header>
 
             <article class="space-y-10 pt-8 md:space-y-12 md:pt-10">
-                <section class="grid gap-7 md:grid-cols-[1fr_240px] md:items-start md:gap-9">
+                <section
+                    class="grid gap-7 md:grid-cols-[1fr_240px] md:items-start md:gap-9 md:mx-6"
+                >
                     <figure
                         class="overflow-hidden rounded-sm border border-zinc-300/70 bg-zinc-100/80 shadow-[0_4px_12px_-10px_rgba(39,39,42,0.38)] md:order-2"
                     >
@@ -81,6 +86,24 @@ import { news, profile, publications } from "@/assets/data/site";
 </template>
 
 <style scoped>
+.ornament {
+    position: absolute;
+    right: 1rem;
+    top: -10px;
+    display: none;
+    white-space: nowrap;
+    font-family: var(--roundhand-font-family);
+    font-size: 6rem;
+    line-height: 1;
+    color: #6c7386;
+}
+
+@media (min-width: 768px) {
+    .ornament {
+        display: block;
+    }
+}
+
 .section-title {
     letter-spacing: 0.12em;
     text-transform: uppercase;
