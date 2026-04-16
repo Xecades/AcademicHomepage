@@ -1,4 +1,4 @@
-import type { NewsItem, Profile, Publication, RichNode } from "@/types/site";
+import type { Experience, NewsItem, Profile, Publication, RichNode } from "@/types/site";
 
 const sup = (text: string) => <sup>{text}</sup>;
 const link = (content: RichNode | RichNode[], url: string) => (
@@ -7,6 +7,7 @@ const link = (content: RichNode | RichNode[], url: string) => (
     </a>
 );
 const b = (text: RichNode | RichNode[]) => <strong>{text}</strong>;
+const em = (text: RichNode | RichNode[]) => <em>{text}</em>;
 const commaSeparated = (items: RichNode[]): RichNode[] =>
     items.flatMap((item, index) => (index === 0 ? [item] : [", ", item]));
 
@@ -106,6 +107,22 @@ export const publications: Publication[] = [
             { label: "Paper", url: "https://ieeexplore.ieee.org/document/11434521" },
             { label: "Website", url: "https://xecades.github.io/AerialExtreMatch/" },
             { label: "Code", url: "https://github.com/Xecades/AerialExtreMatch" },
+        ],
+    },
+];
+
+export const experiences: Experience[] = [
+    {
+        id: "zju-undergrad",
+        logo: "/images/experience/zju.svg",
+        institution: ["Zhejiang University"],
+        periodLocation: ["2023–2027 ", em("(expected)"), ". Hangzhou, China"],
+        degree: ["B.Eng.(Honours) in Computer Science"],
+        advisors: [
+            "Advisor: Prof. ",
+            link("Xiaowei Zhou", "https://xzhou.me/"),
+            " & Prof. ",
+            link("Sida Peng", "https://pengsida.net/"),
         ],
     },
 ];

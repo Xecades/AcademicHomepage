@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import NewsTable from "@/components/NewsTable.vue";
+import NewsList from "@/components/NewsList.vue";
 import PublicationList from "@/components/PublicationList.vue";
 import RichText from "@/components/RichText.vue";
-import { news, profile, publications } from "@/assets/data/site";
+import { experiences, news, profile, publications } from "@/assets/data/site";
+import ExperienceList from "@/components/ExperienceList.vue";
 </script>
 
 <template>
     <div class="min-h-screen text-slate-700">
-        <div class="mx-auto max-w-5xl px-6 pb-14 pt-12 md:px-10 md:pb-16 md:pt-16">
+        <div class="mx-auto max-w-5xl px-6 pb-14 pt-12 md:px-16 md:pb-16 md:pt-16">
             <header class="border-b border-zinc-300/70 pb-8 md:pb-10 relative">
                 <div class="ornament" aria-hidden="true">
                     {{ profile.firstName }} {{ profile.lastName }}
@@ -72,13 +73,18 @@ import { news, profile, publications } from "@/assets/data/site";
 
                 <section class="space-y-4">
                     <h2 class="section-title text-sm text-zinc-500">news</h2>
-                    <NewsTable :items="news" scrollable />
+                    <NewsList :items="news" scrollable />
                 </section>
 
                 <section class="space-y-4">
                     <h2 class="section-title text-sm text-zinc-500">research</h2>
                     <p class="text-sm italic text-zinc-500">(* denotes equal contribution)</p>
-                    <PublicationList :items="publications" :show-year-headings="false" />
+                    <PublicationList :items="publications" />
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="section-title text-sm text-zinc-500">Experience</h2>
+                    <ExperienceList :items="experiences" />
                 </section>
             </article>
         </div>
@@ -111,7 +117,8 @@ import { news, profile, publications } from "@/assets/data/site";
 
 .copy :deep(a),
 .news-table :deep(a),
-.pub-list :deep(a) {
+.pub-list :deep(a),
+.experience-list :deep(a) {
     border-bottom: 1px solid color-mix(in srgb, #3f3f46 28%, transparent);
     color: #27272a;
     text-decoration: none;
@@ -134,6 +141,7 @@ import { news, profile, publications } from "@/assets/data/site";
 .copy :deep(a:hover),
 .news-table :deep(a:hover),
 .pub-list :deep(a:hover),
+.experience-list :deep(a:hover),
 .hero-subtitle :deep(a:hover) {
     border-bottom-color: color-mix(in srgb, #18181b 55%, transparent);
     color: #18181b;

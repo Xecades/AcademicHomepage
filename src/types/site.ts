@@ -31,3 +31,12 @@ export interface Profile {
     avatar: string;
     footer: RichNode[];
 }
+
+export interface Experience {
+    id: string;
+    logo: string;
+    institution: RichNode[];
+    periodLocation: RichNode[];
+    degree: RichNode[];
+    advisors: RichNode[];
+}

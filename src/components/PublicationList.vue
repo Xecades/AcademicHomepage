@@ -1,55 +1,18 @@
 <script setup lang="ts">
-import { computed } from "vue";
-
 import PublicationItem from "@/components/PublicationItem.vue";
 
 import type { Publication } from "@/types/site";
 
-const props = withDefaults(
-    defineProps<{
-        items: Publication[];
-        showYearHeadings?: boolean;
-    }>(),
-    {
-        showYearHeadings: true,
-    },
-);
-
-const list = computed(() => props.items);
-
-const grouped = computed(() => {
-    const map = new Map<number, Publication[]>();
-
-    for (const publication of list.value) {
-        const group = map.get(publication.year) ?? [];
-        group.push(publication);
-        map.set(publication.year, group);
-    }
-
-    return [...map.entries()].sort((a, b) => b[0] - a[0]).map(([year, items]) => ({ year, items }));
-});
+defineProps<{
+    items: Publication[];
+}>();
 </script>
 
 <template>
     <div class="pub-list space-y-8">
-        <template v-if="showYearHeadings">
-            <template v-for="group in grouped" :key="group.year">
-                <h2 class="text-sm uppercase tracking-[0.12em] text-zinc-500">
-                    {{ group.year }}
-                </h2>
-                <ol class="space-y-7">
-                    <PublicationItem
-                        v-for="publication in group.items"
-                        :key="publication.id"
-                        :publication="publication"
-                    />
-                </ol>
-            </template>
-        </template>
-
-        <ol v-else class="space-y-7">
+        <ol class="space-y-7">
             <PublicationItem
-                v-for="publication in list"
+                v-for="publication in items"
                 :key="publication.id"
                 :publication="publication"
             />
