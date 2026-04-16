@@ -88,7 +88,7 @@ export const news: NewsItem[] = [
 export const publications: Publication[] = [
     {
         id: "aerialextrematch",
-        preview: "/assets/img/pubs/AerialExtreMatch.png",
+        preview: "./images/pubs/AerialExtreMatch.png",
         title: "AerialExtreMatch: A Benchmark for Extreme-View Image Matching and Localization",
         authors: commaSeparated([
             _authors.rouwan_wu.star,
