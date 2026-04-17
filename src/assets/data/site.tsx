@@ -72,6 +72,13 @@ export const profile: Profile = {
         { label: "X", url: "https://x.com/XecadesZhe" },
         { label: "CV", url: "zhehuang-cv.pdf" },
     ],
+    calligraphy: {
+        tooltipText: "I do English calligraphy 😉 Some of my works 👇",
+        imagePairs: [
+            ["/images/ornaments/image1.min.jpg", "/images/ornaments/image1.jpg"],
+            ["/images/ornaments/image2.min.jpg", "/images/ornaments/image2.jpg"],
+        ],
+    },
     avatar: "https://placehold.co/600x800/eee/bbb?text=Photo\\nnot+taken\\nyet+:(",
     footer: ["© Copyright 2026 Zhe Huang"],
 };

@@ -2,6 +2,13 @@ import type { JSX } from "vue/jsx-runtime";
 
 export type RichNode = JSX.Element | string;
 
+export type ImagePair = [lowRes: string, highRes: string];
+
+export interface CalligraphyGallery {
+    tooltipText: string;
+    imagePairs: ImagePair[];
+}
+
 export interface PublicationLink {
     label: string;
     url: string;
@@ -30,6 +37,7 @@ export interface Profile {
     contacts: PublicationLink[];
     avatar: string;
     footer: RichNode[];
+    calligraphy: CalligraphyGallery;
 }
 
 export interface Experience {

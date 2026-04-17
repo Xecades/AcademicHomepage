@@ -4,15 +4,18 @@ import PublicationList from "@/components/PublicationList.vue";
 import RichText from "@/components/RichText.vue";
 import { experiences, news, profile, publications } from "@/assets/data/site";
 import ExperienceList from "@/components/ExperienceList.vue";
+import CalligraphyTooltipTrigger from "@/components/calligraphy/CalligraphyTooltipTrigger.vue";
 </script>
 
 <template>
     <div class="min-h-screen text-slate-700">
         <div class="mx-auto max-w-5xl px-6 pb-14 pt-12 md:px-16 md:pb-16 md:pt-16">
             <header class="border-b border-zinc-300/70 pb-8 md:pb-10 relative">
-                <div class="ornament" aria-hidden="true">
-                    {{ profile.firstName }} {{ profile.lastName }}
-                </div>
+                <CalligraphyTooltipTrigger
+                    :text="`${profile.firstName} ${profile.lastName}`"
+                    :tooltip-text="profile.calligraphy.tooltipText"
+                    :image-pairs="profile.calligraphy.imagePairs"
+                />
                 <h1
                     class="text-4xl font-[530] text-zinc-700 md:text-5xl font-(family-name:--header-font-family)"
                 >
@@ -92,24 +95,6 @@ import ExperienceList from "@/components/ExperienceList.vue";
 </template>
 
 <style scoped>
-.ornament {
-    position: absolute;
-    right: 1rem;
-    top: -10px;
-    display: none;
-    white-space: nowrap;
-    font-family: var(--roundhand-font-family);
-    font-size: 6rem;
-    line-height: 1;
-    color: #6c7386;
-}
-
-@media (min-width: 768px) {
-    .ornament {
-        display: block;
-    }
-}
-
 .section-title {
     letter-spacing: 0.12em;
     text-transform: uppercase;
