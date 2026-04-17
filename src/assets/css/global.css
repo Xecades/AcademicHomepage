@@ -36,6 +36,21 @@ body {
     font-weight: 600;
 }
 
+/* Keep app blank until reveal sequence is fully registered. */
+html.rv-pending #app {
+    visibility: hidden;
+}
+
+/* ScrollReveal.js Flicker Prevention */
+html.sr .rv {
+    visibility: hidden;
+}
+
+/* Respect reduced motion preferences. */
+html.rv-no-motion .rv {
+    visibility: visible !important;
+}
+
 * {
     -webkit-tap-highlight-color: transparent;
 }

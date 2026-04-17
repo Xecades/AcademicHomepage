@@ -110,49 +110,56 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <div class="lightbox" :class="{ open }" @click.self="emit('close')">
-        <button type="button" class="lb-close" aria-label="Close lightbox" @click="emit('close')">
-            <FontAwesomeIcon icon="fa-solid fa-xmark" />
-        </button>
+    <Teleport to="body">
+        <div class="lightbox" :class="{ open }" @click.self="emit('close')">
+            <button
+                type="button"
+                class="lb-close"
+                aria-label="Close lightbox"
+                @click="emit('close')"
+            >
+                <FontAwesomeIcon icon="fa-solid fa-xmark" />
+            </button>
 
-        <button
-            type="button"
-            class="lb-arrow lb-arrow-prev"
-            aria-label="Previous image"
-            @click.stop="go(index - 1)"
-        >
-            <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
-        </button>
+            <button
+                type="button"
+                class="lb-arrow lb-arrow-prev"
+                aria-label="Previous image"
+                @click.stop="go(index - 1)"
+            >
+                <FontAwesomeIcon icon="fa-solid fa-chevron-left" />
+            </button>
 
-        <div class="lb-stage" @click="emit('close')">
-            <div class="lb-track" :style="trackStyle">
-                <div
-                    v-for="(pair, itemIndex) in imagePairs"
-                    :key="`${pair[1]}-${itemIndex}`"
-                    class="lb-slide"
-                >
-                    <img
-                        v-if="highResSources[itemIndex]"
-                        :src="highResSources[itemIndex]"
-                        alt="Calligraphy work"
-                        loading="lazy"
-                        :class="{ loaded: loadedHighRes[itemIndex] }"
-                        @load="markLoaded(itemIndex)"
-                    />
-                    <div class="lb-skeleton" :class="{ hidden: loadedHighRes[itemIndex] }" />
+            <div class="lb-stage" @click="emit('close')">
+                <div class="lb-track" :style="trackStyle">
+                    <div
+                        v-for="(pair, itemIndex) in imagePairs"
+                        :key="`${pair[1]}-${itemIndex}`"
+                        class="lb-slide"
+                    >
+                        <img
+                            v-if="highResSources[itemIndex]"
+                            :src="highResSources[itemIndex]"
+                            alt="Calligraphy work"
+                            loading="lazy"
+                            :class="{ loaded: loadedHighRes[itemIndex] }"
+                            @load="markLoaded(itemIndex)"
+                        />
+                        <div class="lb-skeleton" :class="{ hidden: loadedHighRes[itemIndex] }" />
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <button
-            type="button"
-            class="lb-arrow lb-arrow-next"
-            aria-label="Next image"
-            @click.stop="go(index + 1)"
-        >
-            <FontAwesomeIcon icon="fa-solid fa-chevron-right" />
-        </button>
-    </div>
+            <button
+                type="button"
+                class="lb-arrow lb-arrow-next"
+                aria-label="Next image"
+                @click.stop="go(index + 1)"
+            >
+                <FontAwesomeIcon icon="fa-solid fa-chevron-right" />
+            </button>
+        </div>
+    </Teleport>
 </template>
 
 <style scoped>
@@ -252,9 +259,6 @@ onBeforeUnmount(() => {
 }
 
 .lb-slide img {
-    width: auto;
-    height: 100%;
-    max-width: 100%;
     object-fit: contain;
     border-radius: 3px;
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);
