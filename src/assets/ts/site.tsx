@@ -70,6 +70,7 @@ export const profile: Profile = {
         { label: "Email", url: "mailto:zhehuang02@gmail.com" },
         { label: "Github", url: "https://github.com/Xecades" },
         { label: "X", url: "https://x.com/XecadesZhe" },
+        { label: "Home", url: "https://xecades.xyz/" },
         { label: "CV", url: "zhehuang-cv.pdf" },
     ],
     calligraphy: {
