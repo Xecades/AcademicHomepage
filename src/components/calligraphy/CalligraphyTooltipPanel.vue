@@ -84,7 +84,7 @@ const tooltipStyle = computed<CSSProperties>(() => ({
     position: absolute;
     bottom: 100%;
     right: var(--arrow-right, 50px);
-    transform: translateX(50%);
+    transform: translateX(50%) translateY(1px);
     border: 8px solid transparent;
     border-bottom-color: var(--calligraphy-tooltip-bg, #f4f8ff);
 }
@@ -92,13 +92,14 @@ const tooltipStyle = computed<CSSProperties>(() => ({
 .tooltip::before {
     content: "";
     position: absolute;
-    top: 100%;
+    bottom: 100%;
     right: var(--arrow-right, 50px);
     transform: translateX(50%);
     border: 9px solid transparent;
-    border-top-color: var(--calligraphy-tooltip-border, #d6e2f1);
-    margin-top: 1px;
-    z-index: -1;
+    border-bottom-color: var(--calligraphy-tooltip-border, #d6e2f1);
+    filter: drop-shadow(
+        0 4px 10px var(--calligraphy-tooltip-arrow-shadow, rgba(58, 84, 118, 0.15))
+    );
 }
 
 .tooltip-text {

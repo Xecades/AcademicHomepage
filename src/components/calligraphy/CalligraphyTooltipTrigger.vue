@@ -151,6 +151,7 @@ onBeforeUnmount(() => {
     --calligraphy-tooltip-text: #4f627b;
     --calligraphy-tooltip-shadow-strong: rgba(58, 84, 118, 0.16);
     --calligraphy-tooltip-shadow-soft: rgba(58, 84, 118, 0.08);
+    --calligraphy-tooltip-arrow-shadow: rgba(58, 84, 118, 0.15);
 
     --calligraphy-carousel-skeleton-start: #dee8f3;
     --calligraphy-carousel-skeleton-mid: #edf3fa;
