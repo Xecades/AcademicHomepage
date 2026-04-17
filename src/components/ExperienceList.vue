@@ -13,13 +13,13 @@ defineProps<{
         <li
             v-for="experience in items"
             :key="experience.id"
-            class="grid gap-4 md:grid-cols-[128px_1fr] md:gap-8"
+            class="grid gap-3 md:grid-cols-[128px_1fr] md:gap-8"
         >
             <div class="items-start justify-start self-center">
                 <img
                     :src="experience.logo"
                     alt="Institution logo"
-                    class="h-14 w-14 object-contain md:h-32 md:w-32"
+                    class="h-20 w-20 object-contain md:h-32 md:w-32"
                 />
             </div>
             <div class="space-y-1 self-center">

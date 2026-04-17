@@ -21,11 +21,11 @@ defineProps<{
                     >
                         <th
                             scope="row"
-                            class="w-34 whitespace-nowrap px-4 py-3 text-xs font-normal uppercase tracking-[0.12em] leading-6 text-zinc-500 md:px-5 sans-serif"
+                            class="w-30 md:w-34 whitespace-nowrap pl-4 pr-2 py-3 text-xs font-normal uppercase tracking-[0.12em] leading-6 text-zinc-500 md:px-5 sans-serif"
                         >
                             {{ item.dateLabel }}
                         </th>
-                        <td class="px-4 py-3 align-top md:px-5">
+                        <td class="pl-2 pr-4 py-3 align-top md:px-5">
                             <RichText :nodes="item.content" tag="p" class="m-0" />
                         </td>
                     </tr>

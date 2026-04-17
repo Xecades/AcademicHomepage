@@ -34,7 +34,7 @@ import CalligraphyTooltipTrigger from "@/components/calligraphy/CalligraphyToolt
                     class="grid gap-7 md:grid-cols-[1fr_240px] md:items-start md:gap-9 md:mx-6"
                 >
                     <figure
-                        class="overflow-hidden rounded-sm border border-zinc-300/70 bg-zinc-100/80 shadow-[0_4px_12px_-10px_rgba(39,39,42,0.38)] md:order-2"
+                        class="overflow-hidden rounded-sm border border-zinc-300/70 bg-zinc-100/80 shadow-[0_4px_12px_-10px_rgba(39,39,42,0.38)] md:order-2 max-w-[60%] mx-auto md:max-w-none"
                     >
                         <img
                             :src="profile.avatar"
