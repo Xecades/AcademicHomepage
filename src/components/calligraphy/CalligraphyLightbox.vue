@@ -132,7 +132,7 @@ onBeforeUnmount(() => {
 .lightbox {
     position: fixed;
     inset: 0;
-    background: var(--calligraphy-lightbox-overlay, rgba(12, 24, 38, 0.9));
+    background: rgb(10 10 11 / 90%);
     z-index: 1000;
     opacity: 0;
     visibility: hidden;
@@ -157,7 +157,7 @@ onBeforeUnmount(() => {
     right: 22px;
     border: 0;
     background: none;
-    color: var(--calligraphy-lightbox-control-color, #b6cde7);
+    color: #ddd;
     font-size: 20px;
     cursor: pointer;
     transition: color 150ms ease;
@@ -165,7 +165,7 @@ onBeforeUnmount(() => {
 }
 
 .lb-close:hover {
-    color: var(--calligraphy-lightbox-control-color-hover, #f0f7ff);
+    color: #fff;
 }
 
 .lb-arrow {
@@ -175,23 +175,20 @@ onBeforeUnmount(() => {
     width: 44px;
     height: 44px;
     border-radius: 9999px;
-    border: 1px solid var(--calligraphy-lightbox-control-border, rgba(168, 195, 224, 0.34));
-    background: var(--calligraphy-lightbox-control-bg, rgba(214, 232, 251, 0.12));
-    color: var(--calligraphy-lightbox-control-color, #b6cde7);
+    border: 1px solid rgb(204 204 204 / 24%);
+    background: rgb(185 185 185 / 12%);
+    color: #ddd;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition:
-        background 150ms ease,
-        color 150ms ease;
+    transition: background 150ms ease;
     z-index: 20;
     font-size: 16px;
 }
 
 .lb-arrow:hover {
-    background: var(--calligraphy-lightbox-control-bg-hover, rgba(227, 242, 255, 0.22));
-    color: var(--calligraphy-lightbox-control-color-hover, #f0f7ff);
+    background: rgb(225 225 225 / 22%);
 }
 
 .lb-arrow-prev {
@@ -228,8 +225,9 @@ onBeforeUnmount(() => {
 }
 
 .lb-slide img {
-    width: 100%;
+    width: auto;
     height: 100%;
+    max-width: 100%;
     object-fit: contain;
     border-radius: 3px;
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.6);

@@ -25,7 +25,7 @@ const tooltipStyle = computed<CSSProperties>(() => ({
 
 <template>
     <div
-        class="tooltip"
+        class="tooltip bg-[#fdfefe] border border-zinc-300/70 rounded-sm"
         :class="{ visible }"
         :style="tooltipStyle"
         role="dialog"
@@ -49,12 +49,7 @@ const tooltipStyle = computed<CSSProperties>(() => ({
     top: calc(100% + var(--calligraphy-tooltip-gap, 14px));
     right: 0;
     width: var(--calligraphy-tooltip-width, min(340px, 82vw));
-    background: var(--calligraphy-tooltip-bg, #f4f8ff);
-    border: 1px solid var(--calligraphy-tooltip-border, #d6e2f1);
-    border-radius: var(--calligraphy-tooltip-radius, 12px);
-    box-shadow:
-        0 8px 36px var(--calligraphy-tooltip-shadow-strong, rgba(58, 84, 118, 0.16)),
-        0 2px 8px var(--calligraphy-tooltip-shadow-soft, rgba(58, 84, 118, 0.08));
+    box-shadow: 0 0px 7px 0px rgb(171 174 178 / 16%);
     padding: var(--calligraphy-tooltip-padding-top, 18px) var(--calligraphy-tooltip-padding-x, 18px)
         var(--calligraphy-tooltip-padding-bottom, 14px);
     opacity: 0;
@@ -86,7 +81,7 @@ const tooltipStyle = computed<CSSProperties>(() => ({
     right: var(--arrow-right, 50px);
     transform: translateX(50%) translateY(1px);
     border: 8px solid transparent;
-    border-bottom-color: var(--calligraphy-tooltip-bg, #f4f8ff);
+    border-bottom-color: #ffffff;
 }
 
 .tooltip::before {
@@ -96,17 +91,13 @@ const tooltipStyle = computed<CSSProperties>(() => ({
     right: var(--arrow-right, 50px);
     transform: translateX(50%);
     border: 9px solid transparent;
-    border-bottom-color: var(--calligraphy-tooltip-border, #d6e2f1);
-    filter: drop-shadow(
-        0 4px 10px var(--calligraphy-tooltip-arrow-shadow, rgba(58, 84, 118, 0.15))
-    );
+    border-bottom-color: #e2e4e7;
+    filter: drop-shadow(0 4px 10px rgb(129 132 136 / 8%));
 }
 
 .tooltip-text {
-    margin: 0 0 var(--calligraphy-tooltip-text-gap, 13px);
-    font-size: 13.5px;
+    margin: 0 0 13px;
+    font-size: 14px;
     line-height: 1.5;
-    letter-spacing: 0.01em;
-    color: var(--calligraphy-tooltip-text, #4f627b);
 }
 </style>

@@ -143,12 +143,7 @@ const markLoaded = (index: number) => {
 .slide-skeleton {
     position: absolute;
     inset: 0;
-    background: linear-gradient(
-        90deg,
-        var(--calligraphy-carousel-skeleton-start, #dee8f3) 25%,
-        var(--calligraphy-carousel-skeleton-mid, #edf3fa) 50%,
-        var(--calligraphy-carousel-skeleton-end, #dee8f3) 75%
-    );
+    background: linear-gradient(90deg, #dee8f3 25%, #edf3fa 50%, #dee8f3 75%);
     background-size: 200% 100%;
     animation: shimmer 1.4s infinite;
 }
@@ -165,9 +160,8 @@ const markLoaded = (index: number) => {
     height: 30px;
     border: 0;
     border-radius: 9999px;
-    background: var(--calligraphy-carousel-control-bg, rgba(240, 248, 255, 0.9));
-    box-shadow: 0 2px 8px var(--calligraphy-carousel-control-shadow, rgba(41, 63, 89, 0.14));
-    color: var(--calligraphy-carousel-control-color, #486280);
+    background: rgba(255, 255, 255, 0.5);
+    color: #353637;
     font-size: 11px;
     display: flex;
     align-items: center;
@@ -186,7 +180,7 @@ const markLoaded = (index: number) => {
 }
 
 .arrow:hover {
-    background: var(--calligraphy-carousel-control-bg-hover, #f7fbff);
+    background: #ffffff;
 }
 
 .arrow-prev {
@@ -210,9 +204,8 @@ const markLoaded = (index: number) => {
 .dot {
     width: 6px;
     height: 6px;
-    border: 1px solid var(--calligraphy-carousel-dot-border, rgba(106, 140, 177, 0.42));
     border-radius: 9999px;
-    background: var(--calligraphy-carousel-dot-bg, rgba(234, 244, 255, 0.72));
+    background: rgb(232 232 232 / 72%);
     cursor: pointer;
     padding: 0;
     transition:
@@ -221,7 +214,7 @@ const markLoaded = (index: number) => {
 }
 
 .dot.active {
-    background: var(--calligraphy-carousel-dot-active, #7ea3cb);
+    background: #fff;
     transform: scale(1.3);
 }
 
