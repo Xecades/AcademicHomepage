@@ -80,7 +80,7 @@ export const profile: Profile = {
         ],
     },
     avatar: "https://placehold.co/600x800/eee/bbb?text=Photo\\nnot+taken\\nyet+:(",
-    footer: ["© Copyright 2026 Zhe Huang"],
+    footer: ["© Copyright 2026 Zhe Huang. Last Updated: 2026-04-17"],
 };
 
 export const news: NewsItem[] = [
