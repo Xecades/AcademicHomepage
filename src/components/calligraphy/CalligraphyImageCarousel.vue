@@ -143,7 +143,12 @@ const markLoaded = (index: number) => {
 .slide-skeleton {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, #ece8e0 25%, #f5f1ea 50%, #ece8e0 75%);
+    background: linear-gradient(
+        90deg,
+        var(--calligraphy-carousel-skeleton-start, #dee8f3) 25%,
+        var(--calligraphy-carousel-skeleton-mid, #edf3fa) 50%,
+        var(--calligraphy-carousel-skeleton-end, #dee8f3) 75%
+    );
     background-size: 200% 100%;
     animation: shimmer 1.4s infinite;
 }
@@ -160,9 +165,9 @@ const markLoaded = (index: number) => {
     height: 30px;
     border: 0;
     border-radius: 9999px;
-    background: rgba(255, 253, 249, 0.88);
-    box-shadow: 0 2px 8px rgba(26, 22, 18, 0.12);
-    color: #1a1612;
+    background: var(--calligraphy-carousel-control-bg, rgba(240, 248, 255, 0.9));
+    box-shadow: 0 2px 8px var(--calligraphy-carousel-control-shadow, rgba(41, 63, 89, 0.14));
+    color: var(--calligraphy-carousel-control-color, #486280);
     font-size: 11px;
     display: flex;
     align-items: center;
@@ -170,7 +175,7 @@ const markLoaded = (index: number) => {
     cursor: pointer;
     opacity: 0;
     transition:
-        opacity 200ms ease,
+        opacity var(--calligraphy-motion-duration, 220ms) var(--calligraphy-motion-ease, ease),
         background 150ms ease;
     z-index: 10;
 }
@@ -181,7 +186,7 @@ const markLoaded = (index: number) => {
 }
 
 .arrow:hover {
-    background: #fffdf9;
+    background: var(--calligraphy-carousel-control-bg-hover, #f7fbff);
 }
 
 .arrow-prev {
@@ -205,9 +210,9 @@ const markLoaded = (index: number) => {
 .dot {
     width: 6px;
     height: 6px;
-    border: 1px solid rgba(184, 151, 90, 0.42);
+    border: 1px solid var(--calligraphy-carousel-dot-border, rgba(106, 140, 177, 0.42));
     border-radius: 9999px;
-    background: rgba(255, 253, 249, 0.55);
+    background: var(--calligraphy-carousel-dot-bg, rgba(234, 244, 255, 0.72));
     cursor: pointer;
     padding: 0;
     transition:
@@ -216,7 +221,7 @@ const markLoaded = (index: number) => {
 }
 
 .dot.active {
-    background: #b8975a;
+    background: var(--calligraphy-carousel-dot-active, #7ea3cb);
     transform: scale(1.3);
 }
 

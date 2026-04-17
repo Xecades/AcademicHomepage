@@ -49,12 +49,12 @@ const tooltipStyle = computed<CSSProperties>(() => ({
     top: calc(100% + var(--calligraphy-tooltip-gap, 14px));
     right: 0;
     width: var(--calligraphy-tooltip-width, min(340px, 82vw));
-    background: #fffdf9;
-    border: 1px solid #e8dfc8;
+    background: var(--calligraphy-tooltip-bg, #f4f8ff);
+    border: 1px solid var(--calligraphy-tooltip-border, #d6e2f1);
     border-radius: var(--calligraphy-tooltip-radius, 12px);
     box-shadow:
-        0 8px 36px rgba(26, 22, 18, 0.13),
-        0 2px 8px rgba(26, 22, 18, 0.07);
+        0 8px 36px var(--calligraphy-tooltip-shadow-strong, rgba(58, 84, 118, 0.16)),
+        0 2px 8px var(--calligraphy-tooltip-shadow-soft, rgba(58, 84, 118, 0.08));
     padding: var(--calligraphy-tooltip-padding-top, 18px) var(--calligraphy-tooltip-padding-x, 18px)
         var(--calligraphy-tooltip-padding-bottom, 14px);
     opacity: 0;
@@ -62,8 +62,9 @@ const tooltipStyle = computed<CSSProperties>(() => ({
     transform: translateY(6px);
     pointer-events: none;
     transition:
-        opacity 200ms ease,
-        transform 200ms ease;
+        opacity var(--calligraphy-motion-duration, 220ms) var(--calligraphy-motion-ease, ease),
+        transform var(--calligraphy-motion-duration, 220ms) var(--calligraphy-motion-ease, ease),
+        visibility 0s linear var(--calligraphy-motion-duration, 220ms);
     z-index: 100;
 }
 
@@ -72,6 +73,10 @@ const tooltipStyle = computed<CSSProperties>(() => ({
     visibility: visible;
     transform: translateY(0);
     pointer-events: all;
+    transition:
+        opacity var(--calligraphy-motion-duration, 220ms) var(--calligraphy-motion-ease, ease),
+        transform var(--calligraphy-motion-duration, 220ms) var(--calligraphy-motion-ease, ease),
+        visibility 0s linear 0s;
 }
 
 .tooltip::after {
@@ -81,7 +86,7 @@ const tooltipStyle = computed<CSSProperties>(() => ({
     right: var(--arrow-right, 50px);
     transform: translateX(50%);
     border: 8px solid transparent;
-    border-bottom-color: #fffdf9;
+    border-bottom-color: var(--calligraphy-tooltip-bg, #f4f8ff);
 }
 
 .tooltip::before {
@@ -91,7 +96,7 @@ const tooltipStyle = computed<CSSProperties>(() => ({
     right: var(--arrow-right, 50px);
     transform: translateX(50%);
     border: 9px solid transparent;
-    border-top-color: #e8dfc8;
+    border-top-color: var(--calligraphy-tooltip-border, #d6e2f1);
     margin-top: 1px;
     z-index: -1;
 }
@@ -101,6 +106,6 @@ const tooltipStyle = computed<CSSProperties>(() => ({
     font-size: 13.5px;
     line-height: 1.5;
     letter-spacing: 0.01em;
-    color: #5c5040;
+    color: var(--calligraphy-tooltip-text, #4f627b);
 }
 </style>

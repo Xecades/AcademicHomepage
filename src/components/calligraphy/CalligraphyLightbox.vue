@@ -130,16 +130,25 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .lightbox {
-    display: none;
     position: fixed;
     inset: 0;
-    background: rgba(18, 14, 10, 0.94);
+    background: var(--calligraphy-lightbox-overlay, rgba(12, 24, 38, 0.9));
     z-index: 1000;
-    animation: fade-in 200ms ease;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition:
+        opacity var(--calligraphy-motion-duration, 220ms) var(--calligraphy-motion-ease, ease),
+        visibility 0s linear var(--calligraphy-motion-duration, 220ms);
 }
 
 .lightbox.open {
-    display: block;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition:
+        opacity var(--calligraphy-motion-duration, 220ms) var(--calligraphy-motion-ease, ease),
+        visibility 0s linear 0s;
 }
 
 .lb-close {
@@ -148,7 +157,7 @@ onBeforeUnmount(() => {
     right: 22px;
     border: 0;
     background: none;
-    color: #c8b99a;
+    color: var(--calligraphy-lightbox-control-color, #b6cde7);
     font-size: 20px;
     cursor: pointer;
     transition: color 150ms ease;
@@ -156,7 +165,7 @@ onBeforeUnmount(() => {
 }
 
 .lb-close:hover {
-    color: #fff;
+    color: var(--calligraphy-lightbox-control-color-hover, #f0f7ff);
 }
 
 .lb-arrow {
@@ -166,9 +175,9 @@ onBeforeUnmount(() => {
     width: 44px;
     height: 44px;
     border-radius: 9999px;
-    border: 1px solid rgba(200, 185, 154, 0.3);
-    background: rgba(255, 253, 249, 0.1);
-    color: #c8b99a;
+    border: 1px solid var(--calligraphy-lightbox-control-border, rgba(168, 195, 224, 0.34));
+    background: var(--calligraphy-lightbox-control-bg, rgba(214, 232, 251, 0.12));
+    color: var(--calligraphy-lightbox-control-color, #b6cde7);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -181,8 +190,8 @@ onBeforeUnmount(() => {
 }
 
 .lb-arrow:hover {
-    background: rgba(255, 253, 249, 0.18);
-    color: #fff;
+    background: var(--calligraphy-lightbox-control-bg-hover, rgba(227, 242, 255, 0.22));
+    color: var(--calligraphy-lightbox-control-color-hover, #f0f7ff);
 }
 
 .lb-arrow-prev {
@@ -236,7 +245,12 @@ onBeforeUnmount(() => {
 .lb-skeleton {
     position: absolute;
     inset: 48px 80px;
-    background: linear-gradient(90deg, #2a2420 25%, #3a3028 50%, #2a2420 75%);
+    background: linear-gradient(
+        90deg,
+        var(--calligraphy-lightbox-skeleton-start, #243447) 25%,
+        var(--calligraphy-lightbox-skeleton-mid, #324a65) 50%,
+        var(--calligraphy-lightbox-skeleton-end, #243447) 75%
+    );
     background-size: 200% 100%;
     animation: shimmer 1.4s infinite;
     border-radius: 6px;
@@ -272,16 +286,6 @@ onBeforeUnmount(() => {
 @keyframes shimmer {
     to {
         background-position: -200% 0;
-    }
-}
-
-@keyframes fade-in {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
     }
 }
 </style>
