@@ -37,6 +37,7 @@ const tooltipStyle = computed<CSSProperties>(() => ({
         <CalligraphyImageCarousel
             :image-pairs="imagePairs"
             :index="index"
+            :active="visible"
             @update:index="emit('update:index', $event)"
             @open="emit('open', $event)"
         />

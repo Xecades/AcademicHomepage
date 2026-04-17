@@ -144,10 +144,6 @@ onBeforeUnmount(() => {
     --calligraphy-motion-duration: 220ms;
     --calligraphy-motion-ease: cubic-bezier(0.4, 0, 0.2, 1);
 
-    --calligraphy-lightbox-skeleton-start: #243447;
-    --calligraphy-lightbox-skeleton-mid: #324a65;
-    --calligraphy-lightbox-skeleton-end: #243447;
-
     position: absolute;
     right: 1rem;
     top: -10px;

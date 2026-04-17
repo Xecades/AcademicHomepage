@@ -15,21 +15,47 @@ const emit = defineEmits<{
 }>();
 
 const loadedHighRes = ref<boolean[]>([]);
+const highResSources = ref<Array<string | null>>([]);
 
 watch(
     () => props.imagePairs,
     (pairs) => {
         loadedHighRes.value = pairs.map(() => false);
+        highResSources.value = pairs.map(() => null);
     },
     { immediate: true },
 );
+
+const ensureHighResLoaded = (index: number) => {
+    const pair = props.imagePairs[index];
+    if (!pair || highResSources.value[index]) {
+        return;
+    }
+
+    highResSources.value[index] = pair[1];
+};
 
 watch(
     () => props.open,
     (isOpen) => {
         document.body.style.overflow = isOpen ? "hidden" : "";
+
+        if (isOpen) {
+            ensureHighResLoaded(props.index);
+        }
     },
     { immediate: true },
+);
+
+watch(
+    () => props.index,
+    (index) => {
+        if (!props.open) {
+            return;
+        }
+
+        ensureHighResLoaded(index);
+    },
 );
 
 onBeforeUnmount(() => {
@@ -106,7 +132,8 @@ onBeforeUnmount(() => {
                     class="lb-slide"
                 >
                     <img
-                        :src="pair[1]"
+                        v-if="highResSources[itemIndex]"
+                        :src="highResSources[itemIndex]"
                         alt="Calligraphy work"
                         loading="lazy"
                         :class="{ loaded: loadedHighRes[itemIndex] }"
@@ -243,12 +270,7 @@ onBeforeUnmount(() => {
 .lb-skeleton {
     position: absolute;
     inset: 48px 80px;
-    background: linear-gradient(
-        90deg,
-        var(--calligraphy-lightbox-skeleton-start, #243447) 25%,
-        var(--calligraphy-lightbox-skeleton-mid, #324a65) 50%,
-        var(--calligraphy-lightbox-skeleton-end, #243447) 75%
-    );
+    background: linear-gradient(90deg, #2d2f33 25%, #3a3d42 50%, #2d2f33 75%);
     background-size: 200% 100%;
     animation: shimmer 1.4s infinite;
     border-radius: 6px;

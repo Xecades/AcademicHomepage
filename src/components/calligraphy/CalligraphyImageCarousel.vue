@@ -6,6 +6,7 @@ import type { ImagePair } from "@/types/site";
 const props = defineProps<{
     imagePairs: ImagePair[];
     index: number;
+    active: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -14,11 +15,34 @@ const emit = defineEmits<{
 }>();
 
 const loadedLowRes = ref<boolean[]>([]);
+const lowResSources = ref<Array<string | null>>([]);
 
 watch(
     () => props.imagePairs,
     (pairs) => {
         loadedLowRes.value = pairs.map(() => false);
+        lowResSources.value = pairs.map(() => null);
+    },
+    { immediate: true },
+);
+
+const ensureLowResLoaded = (index: number) => {
+    const pair = props.imagePairs[index];
+    if (!pair || lowResSources.value[index]) {
+        return;
+    }
+
+    lowResSources.value[index] = pair[0];
+};
+
+watch(
+    [() => props.active, () => props.index, () => props.imagePairs],
+    ([active, index]) => {
+        if (!active) {
+            return;
+        }
+
+        ensureLowResLoaded(index);
     },
     { immediate: true },
 );
@@ -54,7 +78,8 @@ const markLoaded = (index: number) => {
                 @click="emit('open', itemIndex)"
             >
                 <img
-                    :src="pair[0]"
+                    v-if="lowResSources[itemIndex]"
+                    :src="lowResSources[itemIndex]"
                     alt="Calligraphy preview"
                     loading="lazy"
                     :class="{ loaded: loadedLowRes[itemIndex] }"
@@ -143,7 +168,7 @@ const markLoaded = (index: number) => {
 .slide-skeleton {
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, #dee8f3 25%, #edf3fa 50%, #dee8f3 75%);
+    background: linear-gradient(90deg, #e1e3e6 25%, #f0f1f3 50%, #e1e3e6 75%);
     background-size: 200% 100%;
     animation: shimmer 1.4s infinite;
 }
