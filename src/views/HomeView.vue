@@ -44,11 +44,11 @@ setupReveal();
 
             <article class="space-y-10 pt-8 md:space-y-12 md:pt-10">
                 <section
-                    class="grid gap-7 md:grid-cols-[1fr_240px] md:items-start md:gap-9 md:mx-6"
+                    class="grid gap-7 md:grid-cols-[1fr_200px] md:items-start md:gap-9 md:mx-6"
                 >
                     <figure
                         data-rv-step="7"
-                        class="rv overflow-hidden rounded-sm border border-zinc-300/70 bg-zinc-100/80 shadow-[0_4px_12px_-10px_rgba(39,39,42,0.38)] md:order-2 max-w-[60%] mx-auto md:max-w-none"
+                        class="rv overflow-hidden rounded-sm border border-zinc-300/70 bg-zinc-100/80 shadow-[0_4px_12px_-10px_rgba(39,39,42,0.38)] md:order-2 max-w-[60%] mx-auto md:max-w-none md:mt-3"
                     >
                         <img
                             :src="profile.avatar"
