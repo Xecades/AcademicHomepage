@@ -24,24 +24,25 @@ export const revealBaseConfig: Options = {
 };
 
 export const revealTimeline: RevealStep[] = [
-    { step: 1, delta: 0 }, // Title
+    { step: 1, delta: 50 }, // Title
     { step: 2, delta: DELTA }, // Subtitle
     { step: 3, delta: DELTA }, // Calligraphy
     { step: 4, delta: DELTA }, // Border line
     { step: 5, delta: DELTA }, // Bio
     { step: 6, delta: DELTA }, // Links
-    { step: 7, delta: 0 }, // Picture
+    { step: 7, delta: 0, options: { duration: 800 } }, // Picture
     { step: 8, delta: DELTA }, // News header
     { step: 9, delta: DELTA }, // News box
     { step: 10, delta: 0 }, // News items
     { step: 11, delta: DELTA }, // Research header
-    { step: 12, delta: DELTA }, // Research image
+    { step: 12, delta: DELTA, options: { duration: 800 } }, // Research image
     { step: 13, delta: DELTA }, // Research title
     { step: 14, delta: DELTA }, // Research authors
     { step: 15, delta: DELTA }, // Research venue
     { step: 16, delta: DELTA }, // Research links
     { step: 17, delta: DELTA }, // Experiences header
-    { step: 18, delta: DELTA }, // Experiences items
+    { step: 18, delta: DELTA, options: { duration: 800 } }, // Experiences image
+    { step: 19, delta: DELTA }, // Experiences items
 ];
 
 const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;

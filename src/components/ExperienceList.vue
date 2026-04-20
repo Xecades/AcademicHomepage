@@ -26,25 +26,25 @@ defineProps<{
                 <RichText
                     :nodes="experience.institution"
                     tag="strong"
-                    data-rv-step="18"
+                    data-rv-step="19"
                     class="rv m-0 text-[1.04rem] leading-7 text-zinc-900"
                 />
                 <RichText
                     :nodes="experience.periodLocation"
                     tag="p"
-                    data-rv-step="18"
+                    data-rv-step="19"
                     class="rv m-0 text-[0.95rem] leading-6 text-zinc-600"
                 />
                 <RichText
                     :nodes="experience.degree"
                     tag="p"
-                    data-rv-step="18"
+                    data-rv-step="19"
                     class="rv m-0 mb-5 text-[0.95rem] leading-6 text-zinc-700"
                 />
                 <RichText
                     :nodes="experience.advisors"
                     tag="p"
-                    data-rv-step="18"
+                    data-rv-step="19"
                     class="rv m-0 text-[0.95rem] leading-6 text-zinc-700"
                 />
             </div>
