@@ -1,6 +1,8 @@
 import ScrollReveal from "scrollreveal";
 import { onBeforeUnmount, onMounted } from "vue";
 
+import { isDesktopViewport } from "@/assets/ts/viewport";
+
 type Options = scrollReveal.ScrollRevealObjectOptions;
 
 interface RevealStep {
@@ -56,7 +58,7 @@ const isInitiallyVisible = (element: Element) => {
 const mount = () => {
     const root = document.documentElement;
 
-    if (prefersReducedMotion()) {
+    if (prefersReducedMotion() || !isDesktopViewport()) {
         root.classList.add("rv-no-motion");
         root.classList.remove("rv-pending");
         return;
