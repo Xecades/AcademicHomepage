@@ -15,6 +15,9 @@ const props = defineProps<{
 const anchorRef = ref<HTMLElement | null>(null);
 const triggerRef = ref<HTMLButtonElement | null>(null);
 const roundhandReady = ref(false);
+const desktopEnabled = ref(
+    typeof window !== "undefined" ? window.matchMedia("(min-width: 768px)").matches : false,
+);
 const visible = ref(false);
 const activeIndex = ref(0);
 const lightboxOpen = ref(false);
@@ -22,6 +25,7 @@ const arrowRight = ref(50);
 
 let hideTimer: number | undefined;
 let resizeObserver: ResizeObserver | undefined;
+let desktopMediaQuery: MediaQueryList | undefined;
 
 const roundhandFontDescriptor = '1em "Silhouette Roundhand"';
 
@@ -48,8 +52,25 @@ const updateArrowPosition = () => {
     arrowRight.value = Math.round(buttonWidth / 2);
 };
 
+const syncDesktopState = (matches: boolean) => {
+    desktopEnabled.value = matches;
+
+    if (matches) {
+        return;
+    }
+
+    clearHideTimer();
+    releaseTooltipFocus();
+    visible.value = false;
+    lightboxOpen.value = false;
+};
+
+const onDesktopMediaChange = (event: MediaQueryListEvent) => {
+    syncDesktopState(event.matches);
+};
+
 const showTooltip = () => {
-    if (!roundhandReady.value) {
+    if (!desktopEnabled.value || !roundhandReady.value) {
         return;
     }
 
@@ -59,7 +80,7 @@ const showTooltip = () => {
 };
 
 const hideTooltip = () => {
-    if (!roundhandReady.value) {
+    if (!desktopEnabled.value || !roundhandReady.value) {
         return;
     }
 
@@ -72,6 +93,10 @@ const hideTooltip = () => {
 };
 
 const openLightbox = (index: number) => {
+    if (!desktopEnabled.value) {
+        return;
+    }
+
     clearHideTimer();
     releaseTooltipFocus();
     activeIndex.value = index;
@@ -116,6 +141,15 @@ onMounted(() => {
     void ensureRoundhandFontReady();
     updateArrowPosition();
 
+    desktopMediaQuery = window.matchMedia("(min-width: 768px)");
+    syncDesktopState(desktopMediaQuery.matches);
+
+    if (typeof desktopMediaQuery.addEventListener === "function") {
+        desktopMediaQuery.addEventListener("change", onDesktopMediaChange);
+    } else {
+        desktopMediaQuery.addListener(onDesktopMediaChange);
+    }
+
     resizeObserver = new ResizeObserver(() => {
         updateArrowPosition();
     });
@@ -129,6 +163,14 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
     clearHideTimer();
+
+    if (desktopMediaQuery) {
+        if (typeof desktopMediaQuery.removeEventListener === "function") {
+            desktopMediaQuery.removeEventListener("change", onDesktopMediaChange);
+        } else {
+            desktopMediaQuery.removeListener(onDesktopMediaChange);
+        }
+    }
 
     resizeObserver?.disconnect();
     window.removeEventListener("resize", updateArrowPosition);
@@ -155,6 +197,7 @@ onBeforeUnmount(() => {
         <div class="tooltip-bridge" :class="{ visible }" />
 
         <CalligraphyTooltipPanel
+            v-if="desktopEnabled"
             :visible="visible"
             :tooltip-text="tooltipText"
             :image-pairs="imagePairs"
@@ -165,6 +208,7 @@ onBeforeUnmount(() => {
         />
 
         <CalligraphyLightbox
+            v-if="desktopEnabled"
             :open="lightboxOpen"
             :image-pairs="imagePairs"
             :index="activeIndex"

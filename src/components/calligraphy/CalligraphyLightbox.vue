@@ -14,8 +14,22 @@ const emit = defineEmits<{
     (event: "update:index", nextIndex: number): void;
 }>();
 
+const closeUnmountDelayMs = 220;
+
 const loadedHighRes = ref<boolean[]>([]);
 const highResSources = ref<Array<string | null>>([]);
+const renderLightbox = ref(false);
+
+let closeRenderTimer: number | undefined;
+
+const clearCloseRenderTimer = () => {
+    if (closeRenderTimer === undefined) {
+        return;
+    }
+
+    window.clearTimeout(closeRenderTimer);
+    closeRenderTimer = undefined;
+};
 
 watch(
     () => props.imagePairs,
@@ -41,8 +55,21 @@ watch(
         document.body.style.overflow = isOpen ? "hidden" : "";
 
         if (isOpen) {
+            clearCloseRenderTimer();
+            renderLightbox.value = true;
             ensureHighResLoaded(props.index);
+            return;
         }
+
+        if (!renderLightbox.value) {
+            return;
+        }
+
+        clearCloseRenderTimer();
+        closeRenderTimer = window.setTimeout(() => {
+            renderLightbox.value = false;
+            closeRenderTimer = undefined;
+        }, closeUnmountDelayMs);
     },
     { immediate: true },
 );
@@ -59,6 +86,7 @@ watch(
 );
 
 onBeforeUnmount(() => {
+    clearCloseRenderTimer();
     document.body.style.overflow = "";
 });
 
@@ -110,7 +138,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <Teleport to="body">
+    <Teleport v-if="renderLightbox" to="body">
         <div class="lightbox" :class="{ open }" @click.self="emit('close')">
             <button
                 type="button"

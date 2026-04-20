@@ -44,8 +44,7 @@ export const revealTimeline: RevealStep[] = [
     { step: 18, delta: DELTA }, // Experiences items
 ];
 
-const prefersReducedMotion = () =>
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const prefersReducedMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const isInitiallyVisible = (element: Element) => {
     const rect = element.getBoundingClientRect();
